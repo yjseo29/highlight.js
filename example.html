@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>highlight</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css">
+		.s{
+			color: #d44950;
+		}
+		.s1{
+			color: #C30;
+		}
+		.na{
+			color: #4f9fcf;
+		}
+		.kc{
+			color: #069;
+		}
+	</style>
+</head>
+<body>
+<div class="container" style="margin-top:35px;">
+	<div>
+		<pre id="code">$(<span class="s1">selector</span>).highlight('<span id="keyword" class="kc">the</span>', {
+    <span class="kc">color</span>: <span class="s">'black'</span>,
+    <span class="kc">background</span>: <span class="s">'yellow'</span>,
+    <span class="kc">bold</span>: <span class="s" id="bold">false</span>,
+    <span class="kc">ignoreCase</span>: <span class="s" id="ignoreCase">true</span>
+});</pre>
+	</div>
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="word">Keyword</label>
+			<input class="form-control" type="text" id="word" value="the" placeholder="search word">
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" checked> ignoreCase
+			</label>
+			<label>
+				<input type="checkbox"> Bold
+			</label>
+		</div>
+	</form>
+</div>
+<div class="container" style="margin-top: 35px;">
+	<div class="well" id="textbox">
+		<p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML.[3] jQuery is the most popular JavaScript library in use today, with installation on 65% of the top 10 million highest-trafficked sites on the Web.[4][5][6] jQuery is free, open-source software licensed under the MIT License.[2]</p>
+
+		<p>jQuery's syntax is designed to make it easier to navigate a document, select DOM elements, create animations, handle events, and develop Ajax applications. jQuery also provides capabilities for developers to create plug-ins on top of the JavaScript library. This enables developers to create abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets. The modular approach to the jQuery library allows the creation of powerful dynamic web pages and Web applications.</p>
+
+		<p>The set of jQuery core features—DOM element selections, traversal and manipulation—enabled by its selector engine (named "Sizzle" from v1.3), created a new "programming style", fusing algorithms and DOM data structures. This style influenced the architecture of other JavaScript frameworks like YUI v3 and Dojo, later stimulating the creation of the standard Selectors API.[7]</p>
+
+		<p>Microsoft and Nokia bundle jQuery on their platforms.[8] Microsoft includes it with Visual Studio[9] for use within Microsoft's ASP.NET AJAX and ASP.NET MVC frameworks while Nokia has integrated it into the Web Run-Time widget development platform.[10] jQuery has also been used in MediaWiki since version 1.16.</p>
+	</div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/jQuery.highlight.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+	var option = {
+		color: "black",
+		background: "yellow",
+		bold: false,
+		ignoreCase: true
+	}
+	$(function(){
+		var originalContent = $("#textbox").html();
+		var cnt = $("#textbox").highlight($("#word").val(), option);
+
+		$("#word").keyup(function(){
+			$("#textbox").html(originalContent);
+			$("#keyword").html(this.value);
+			if(this.value == "") return;
+			var highlight = $("#textbox").highlight(this.value, option);
+		});
+	});
+</script>
+</body>
+</html>
