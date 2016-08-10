@@ -1,13 +1,12 @@
 /**
  * highlight 0.0.1
- *
  * Licensed under MIT
  *
- * copyright 2016 yjteam
+ * Copyright (c) 2016 yjteam
  * http://yjteam.co.kr
  *
- * github
- * https://github.com/yjseo29
+ * GitHub Repositories
+ * https://github.com/yjseo29/highlight.js
  */
 
 if (typeof jQuery === 'undefined') {
@@ -25,34 +24,49 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
 	$.fn.highlight = function (word, options) {
 		var option = $.extend({
-			background: "yellow",
-			color: "black",
+			background: "#ffff00",
+			color: "#000",
 			bold: false,
-			ignoreCase: true
+			class: "",
+			ignoreCase: true,
+			wholeWord: true
 		}, options);
 		var findCnt = 0;
 
 		if(this.length == 0){
 			throw new Error('Node was not found')
 		}
+
+		var $el = $('<span style="color:'+option.color+';"></span>');
+		if(option.bold){
+			$el.css("font-weight", "bold");
+		}
+		if(option.background != ""){
+			$el.css("background", option.background);
+		}
+		if(option.class != ""){
+			$el.addClass(option.class);
+		}
+
+		if(option.wholeWord){
+			word = "\\b"+escapeRegExp(word)+"\\b";
+		}
+		var re = new RegExp(word, option.ignoreCase == true ? 'gi':'g');
+
 		this.each(function() {
 			var content = $(this).html();
-			var re = new RegExp(word,option.ignoreCase == true ? "gi":"g");
 
-			var $el = $('<span style="color:'+option.color+';">'+word+'</span>');
-			if(option.bold){
-				$el.css("font-weight", "bold");
-			}
-			if(option.background != ""){
-				$el.css("background", option.background);
-			}
-
-			$(this).html(content.replace(re, function(){
+			$(this).html(content.replace(re, function(t){
 				findCnt++;
+				$el.text(t);
 				return $el.get(0).outerHTML;
 			}));
 
 		});
 		return findCnt;
+
+		function escapeRegExp(string){
+			return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		}
 	}
 }(jQuery);

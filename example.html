@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>highlight</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<title>highlight.js</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
 	<style type="text/css">
 		.s{
 			color: #d44950;
@@ -18,63 +18,261 @@
 		.kc{
 			color: #069;
 		}
+		table tbody td:first-child, table tbody td:nth-child(3){
+			color:#8c2418;
+		}
+		table tbody td:nth-child(2){
+			color: #006700;
+		}
+		.matche-cnt{
+			margin-left: 10px;
+			font-size: 16px;
+			color: #999;
+			font-weight: normal;
+		}
+		.jumbotron{
+			width: 100%;
+			padding: 120px 0;
+			margin-bottom: 50px;
+			color: #fff;
+			background: #134E5E; /* fallback for old browsers */
+			background: -webkit-linear-gradient(to left, #134E5E , #71B280); /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to left, #134E5E , #71B280); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			text-align: center;
+		}
+		.jumbotron h1{
+			font-size: 62px!important;
+		}
 	</style>
 </head>
 <body>
-<div class="container" style="margin-top:35px;">
-	<div>
-		<pre id="code">$(<span class="s1">selector</span>).highlight('<span id="keyword" class="kc">the</span>', {
+<a href="https://github.com/yjseo29/highlight.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<div class="jumbotron">
+	<div class="ui text container">
+		<h1 class="ui inverted header">highlight.js</h1>
+		<h2>Do whatever you want when you want to.</h2>
+	</div>
+</div>
+<div class="ui container" style="margin-top:35px;">
+	<h1 class="ui dividing header">Getting Started</h1>
+	<h2 class="ui header">Installing</h2>
+
+	<h4>Include in Your HTML</h4>
+	<div class="ui segment" style="background:#f7f7f9;box-shadow:none;"><pre style="margin:0;">
+<span style="color:#999">&lt;!-- jQuery requires!--&gt;</span>
+&lt;script type="<span class="kc">text/javascript</span>" src="<span class="kc">https://code.jquery.com/jquery-2.2.4.min.js</span>"&gt;&lt;/script&gt;
+&lt;script type="<span class="kc">text/javascript</span>" src="<span class="s1">path</span>/<span class="kc">jQuery.highlight.js</span>"&gt;&lt;/script&gt;</pre>
+	</div>
+
+	<h2 class="ui header">Usage</h2>
+	<div class="ui segment" style="background:#f7f7f9;box-shadow:none;"><pre style="margin:0;">
+var cnt = $(<span class="s1">selector</span>).highlight('<span class="kc">keyword</span>', options);
+
+<span style="color:#999">//callback matches count</span>
+console.log(cnt);</pre>
+	</div>
+	<h3>option</h3>
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th width="120px;">Parameter</th>
+				<th width="100px;">Type</th>
+				<th width="60px;">Default</th>
+				<th width="*">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>color</td>
+				<td>String</td>
+				<td>#000</td>
+				<td>Change font color</td>
+			</tr>
+			<tr>
+				<td>background</td>
+				<td>String</td>
+				<td>#ffff00</td>
+				<td>Change background color</td>
+			</tr>
+			<tr>
+				<td>bold</td>
+				<td>boolean</td>
+				<td>false</td>
+				<td>text bold change</td>
+			</tr>
+			<tr>
+				<td>class</td>
+				<td>String</td>
+				<td>-</td>
+				<td>Add class to keyword elements</td>
+			</tr>
+			<tr>
+				<td>ignoreCase</td>
+				<td>boolean</td>
+				<td>true</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>wholeWord</td>
+				<td>boolean</td>
+				<td>false</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="ui container" style="margin-top:55px;">
+	<h1 class="ui dividing header">Demo</h1>
+	<h2 class="ui header">Code</h2>
+	<div class="ui segment" style="background:#f7f7f9;box-shadow:none;">
+		<pre id="code" style="margin:0;">$(<span class="s1">selector</span>).highlight('<span id="keyword" class="kc">the</span>', {
     <span class="kc">color</span>: <span class="s">'black'</span>,
     <span class="kc">background</span>: <span class="s">'yellow'</span>,
-    <span class="kc">bold</span>: <span class="s" id="bold">false</span>,
-    <span class="kc">ignoreCase</span>: <span class="s" id="ignoreCase">true</span>
+    <span class="kc">ignoreCase</span>: <span class="s" id="ignoreCase">true</span>,
+    <span class="kc">wholeWord</span>: <span class="s" id="wholeWord">false</span>,
+    <span class="kc">bold</span>: <span class="s" id="bold">false</span>
 });</pre>
+		<div class="ui top right attached label"><a href="javascript:;" class="copy-btn" data-inverted="" data-tooltip="Copy code" data-clipboard-target="#code">Copy</a></div>
 	</div>
-	<form class="form-inline">
-		<div class="form-group">
-			<label for="word">Keyword</label>
-			<input class="form-control" type="text" id="word" value="the" placeholder="search word">
+	<form class="ui form">
+		<div class="fields">
+			<div class="field">
+				<label for="word">Keyword</label>
+				<input type="text" id="word" value="the" placeholder="search word">
+			</div>
+			<div class="field" style="padding-top:30px;">
+				<div class="ui checked checkbox">
+					<input type="checkbox" id="toggleIgnoreCase" tabindex="0" class="hidden" checked="">
+					<label>Ignore case</label>
+				</div>
+			</div>
+			<div class="field" style="padding-top:30px;">
+				<div class="ui checkbox">
+					<input type="checkbox" id="toggleWholeWord" tabindex="0" class="hidden">
+					<label>Whole word</label>
+				</div>
+			</div>
+			<div class="field" style="padding-top:30px;">
+				<div class="ui checkbox">
+					<input type="checkbox" id="toggleBold" tabindex="0" class="hidden">
+					<label>Bold</label>
+				</div>
+			</div>
 		</div>
-		<div class="checkbox">
-			<label>
-				<input type="checkbox" checked> ignoreCase
-			</label>
-			<label>
-				<input type="checkbox"> Bold
-			</label>
+		<div class="fields">
+			<div class="field" style="width:90px;">
+				<label for="color">Color</label>
+				<input type="text" placeholder="color" value="black" id="color">
+			</div>
+			<div class="field" style="width:90px;">
+				<label for="background">Background</label>
+				<input type="text" placeholder="color" value="yellow" id="background">
+			</div>
 		</div>
 	</form>
 </div>
-<div class="container" style="margin-top: 35px;">
-	<div class="well" id="textbox">
+<div class="ui container" style="margin:35px 0;">
+	<div class="ui divider"></div>
+	<h2 class="ui header">Result<span class="matche-cnt"><span id="matcheCnt">0</span> matches</span></h2>
+	<div class="ui raised segment" id="textbox">
 		<p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML.[3] jQuery is the most popular JavaScript library in use today, with installation on 65% of the top 10 million highest-trafficked sites on the Web.[4][5][6] jQuery is free, open-source software licensed under the MIT License.[2]</p>
-
 		<p>jQuery's syntax is designed to make it easier to navigate a document, select DOM elements, create animations, handle events, and develop Ajax applications. jQuery also provides capabilities for developers to create plug-ins on top of the JavaScript library. This enables developers to create abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets. The modular approach to the jQuery library allows the creation of powerful dynamic web pages and Web applications.</p>
-
 		<p>The set of jQuery core features—DOM element selections, traversal and manipulation—enabled by its selector engine (named "Sizzle" from v1.3), created a new "programming style", fusing algorithms and DOM data structures. This style influenced the architecture of other JavaScript frameworks like YUI v3 and Dojo, later stimulating the creation of the standard Selectors API.[7]</p>
-
 		<p>Microsoft and Nokia bundle jQuery on their platforms.[8] Microsoft includes it with Visual Studio[9] for use within Microsoft's ASP.NET AJAX and ASP.NET MVC frameworks while Nokia has integrated it into the Web Run-Time widget development platform.[10] jQuery has also been used in MediaWiki since version 1.16.</p>
 	</div>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
 <script type="text/javascript" src="js/jQuery.highlight.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
 <script>
+	var searchCnt = 0;
+
 	var option = {
 		color: "black",
 		background: "yellow",
 		bold: false,
-		ignoreCase: true
+		class: "high",
+		ignoreCase: true,
+		wholeWord: false
 	}
 	$(function(){
+		var clipboard = new Clipboard('.copy-btn');
+
+		clipboard.on('success', function(e) {
+			$(e.trigger).attr('data-tooltip', 'Copied!');
+			e.clearSelection();
+		});
+
+		$('.copy-btn').mouseout(function(e){
+			$(this).attr('data-tooltip', 'Copy code');
+		});
+
+		$('.ui.checkbox').checkbox();
+
 		var originalContent = $("#textbox").html();
-		var cnt = $("#textbox").highlight($("#word").val(), option);
+		searchCnt = $("#textbox").highlight($("#word").val(), option);
+		$("#matcheCnt").text(searchCnt);
 
 		$("#word").keyup(function(){
 			$("#textbox").html(originalContent);
 			$("#keyword").html(this.value);
 			if(this.value == "") return;
-			var highlight = $("#textbox").highlight(this.value, option);
+			searchCnt = $("#textbox").highlight(this.value, option);
+			$("#matcheCnt").text(searchCnt);
+		});
+
+		$("#toggleIgnoreCase").change(function(){
+			$("#textbox").html(originalContent);
+			if($(this).prop("checked")){
+				option.ignoreCase = true;
+				$("#ignoreCase").html("true");
+			}else{
+				option.ignoreCase = false;
+				$("#ignoreCase").html("false");
+			}
+			searchCnt = $("#textbox").highlight($("#word").val(), option);
+			$("#matcheCnt").text(searchCnt);
+		});
+
+		$("#toggleWholeWord").change(function(){
+			$("#textbox").html(originalContent);
+			if($(this).prop("checked")){
+				option.wholeWord = true;
+				$("#wholeWord").html("true");
+			}else{
+				option.wholeWord = false;
+				$("#wholeWord").html("false");
+			}
+			searchCnt = $("#textbox").highlight($("#word").val(), option);
+			$("#matcheCnt").text(searchCnt);
+		});
+
+		$("#toggleBold").change(function(){
+			$("#textbox").html(originalContent);
+			if($(this).prop("checked")){
+				option.bold = true;
+				$("#bold").html("true");
+			}else{
+				option.bold = false;
+				$("#bold").html("false");
+			}
+			searchCnt = $("#textbox").highlight($("#word").val(), option);
+		});
+
+		$("#color").keyup(function(){
+			$("#textbox").html(originalContent);
+			option.color = this.value;
+			searchCnt = $("#textbox").highlight($("#word").val(), option);
+			$("#matcheCnt").text(searchCnt);
+		});
+
+		$("#background").keyup(function(){
+			$("#textbox").html(originalContent);
+			option.background = this.value;
+			searchCnt = $("#textbox").highlight($("#word").val(), option);
+			$("#matcheCnt").text(searchCnt);
 		});
 	});
 </script>
