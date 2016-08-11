@@ -1,5 +1,5 @@
 /**
- * highlight 0.0.1
+ * highlight 1.0.0
  * Licensed under MIT
  *
  * Copyright (c) 2016 yjteam
