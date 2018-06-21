@@ -51,7 +51,7 @@ if (typeof jQuery === 'undefined') {
 		if(option.wholeWord){
 			word = "\\b"+escapeRegExp(word)+"\\b";
 		}
-		var re = new RegExp(word, option.ignoreCase == true ? 'gi':'g');
+		var re = new RegExp(word.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"), option.ignoreCase == true ? 'gi':'g');
 
 		this.each(function() {
 			var content = $(this).html();
