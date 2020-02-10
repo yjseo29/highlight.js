@@ -23,6 +23,11 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
 	$.fn.highlight = function (word, options) {
+		if(!word){
+			console.log("Empty string");
+			return;
+		}
+
 		var option = $.extend({
 			background: "#ffff00",
 			color: "#000",
@@ -33,18 +38,18 @@ if (typeof jQuery === 'undefined') {
 		}, options);
 		var findCnt = 0;
 
-		if(this.length == 0){
-			throw new Error('Node was not found')
+		if(this.length === 0){
+			throw new Error('DOM Not Found');
 		}
 
 		var $el = $('<span style="color:'+option.color+';"></span>');
 		if(option.bold){
 			$el.css("font-weight", "bold");
 		}
-		if(option.background != ""){
+		if(option.background){
 			$el.css("background", option.background);
 		}
-		if(option.class != ""){
+		if(option.class){
 			$el.addClass(option.class);
 		}
 
